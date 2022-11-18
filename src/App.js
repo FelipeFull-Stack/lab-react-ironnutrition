@@ -1,27 +1,27 @@
 import foods from "./foods.json";
-import { useState } from "react";
-import global from "./global.css";
 import { FoodBox } from "./components/FoodBox";
+import { Row } from "antd";
+import { SearchBox } from "./components/SearchBox";
 
 function App() {
 
-  const [food, setFood] = useState("");
-
-
-
-  return (
-    <div>
-      {/* {foods.map((currentElement) => <p>{currentElement.name}<br />
-        <img src={currentElement.image} alt="" key={currentElement.name} />
-      </p>)} */}
-      <FoodBox food={{
-        name: "Orange",
-        calories: 85,
-        image: "https://i.imgur.com/abKGOcv.jpg",
-        servings: 1
-      }} />
-    </div>
-  );
-}
+    return (
+      <div>
+        <SearchBox />
+        <Row style={{ width: '100%', justifyContent: 'center' }}>
+          {foods.map((currentElement) => {
+            return (
+              <FoodBox
+                name={currentElement.name}
+                calories={currentElement.calories}
+                image={currentElement.image}
+                servings={currentElement.servings}
+              />
+            )
+          })}
+        </Row>
+      </div>
+    );
+  }
 
 export default App;

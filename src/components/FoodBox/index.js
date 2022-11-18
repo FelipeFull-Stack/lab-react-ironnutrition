@@ -1,32 +1,23 @@
-import { Button } from "antd";
-import style from "./style.module.css";
+import { Button, Col, Card } from "antd";
 
-export function FoodBox(props={
-    name: "",
-    calories: "",
-    image: "",
-    servings: ""
-}) {
+export function FoodBox(props) {
+
+    const { name, calories, image, servings } = props;
+
     return (
-        <div className={style.divStructure}>
-            Nome: {props.name}
-            <img src={props.image} alt="" />
-            Calories: {props.calories}
-            Servings: {props.servings}
-            Total Calories: {props.calories}kcal
-            <Button type="primary">Delete</Button>
-
-
-        </div>
+        <Col>
+            <Card
+                title={name}
+                style={{ width: 230, height: 300, margin: 10 }}
+            >
+                <img src={image} height={60} alt="food" />
+                <p>Calories: {calories}</p>
+                <p>Servings: {servings}</p>
+                <p>
+                    <b>Total Calories: {calories * servings}kcal</b>
+                </p>
+                <Button type="primary"> Delete </Button>
+            </Card>
+        </Col>
     );
 }
-
-
-{/* <Button type="primary">Primary Button</Button> */}
-
-{/* <FoodBox food={ {
-  name: "Orange",
-  calories: 85,
-  image: "https://i.imgur.com/abKGOcv.jpg",
-  servings: 1
-}} /> */}
